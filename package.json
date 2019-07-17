@@ -1,0 +1,17 @@
+{
+  "name": "tc-testing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:chrome": "testcafe chrome ./tests",
+    "test:chrome:headless": "testcafe chrome:headless ./tests",
+    "test:chrome:mobile": "testcafe 'chrome:emulation:device=iphone X' ./tests",
+    "test:safari": "testcafe safari ./tests"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "testcafe": "^1.3.1"
+  }
+}
