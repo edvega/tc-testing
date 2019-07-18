@@ -49,4 +49,32 @@ test('First test', async t => {
     //Window resize
     await t.resizeWindow(800, 600);
     await t.maximizeWindow();
+
+    //Contains
+    await t.expect("element or state or actual value").
+        contains("expected value", "message", { timeout: 1000 });
+    
+    //Not contains
+    await t.expect("actual").notContains("expected valie", "message", { options });
+
+    //Deep Equal
+    await t.expect("actual").eql("expected value", "message", { options });
+
+    //Not deep equal
+    await t.expect("actual").notEql("expected value", "message", { options });
+
+    //check if exist
+    await t.expect(Selector("#selector").exists).ok();
+
+    //Check if not exists
+    await t.expect(Selector("#selector").exists).notOk("error message if expect fails");
+
+    //Greater than
+    await t.expect("actual value").gt("expected value", "message", { options });
+
+    //Less than
+    await t.expect("Actual value").lt("expected value", "message", { options });
+
+    //Within some range
+    await t.expect("actual result").within("Start", "finish", "message", { options });
 });
