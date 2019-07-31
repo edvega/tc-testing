@@ -1,4 +1,4 @@
-import { Selector , t} from "testcafe";
+import { Selector , t } from "testcafe";
 
 class NavbarPage {
     constructor() {
@@ -9,6 +9,10 @@ class NavbarPage {
     async search(text) {
         await t.typeText(this.searchBox, text, { paste: true, replace: true})
             .pressKey("enter");
+    }
+
+    async clickSignInButton() {
+        await t.click(this.signInButton);
     }
 }
 
