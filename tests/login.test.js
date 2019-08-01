@@ -13,7 +13,7 @@ test("Should try to login and get error message", async t => {
     navbarPage.clickSignInButton();
     loginPage.login("user", "password");
 
-    await t.expect(loginPage.errorMessageText.innerText)
+    await t.expect(loginPage.errorMessage.innerText)
         .contains("Login and/or password are wrong");
-    await t.expect(loginPage.loginForm.exists).ok();
+    await t.expect(loginPage.form.exists).ok();
 });

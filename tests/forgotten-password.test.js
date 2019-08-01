@@ -1,28 +1,23 @@
 import { Selector } from "testcafe";
 //import { link } from "fs";
 import NavbarPage from "../page-objects/Navbar-Page";
+import LoginPage from "../page-objects/Login-Page";
+import ForgottenPasswordPage from "../page-objects/ForgottenPassword-Page";
 
 const navbarPage = new NavbarPage();
+const loginPage = new LoginPage();
+const passwordPage = new ForgottenPasswordPage();
 
 fixture `Send forgotten password test`
     .page `http://zero.webappsecurity.com/index.html`;
 
 test("Should send new password", async t => {
     
-    //Get selectors
-    const signInButton = Selector("#signin_button");
-    const linkToPasswords = Selector("a").withText("Forgot your password ?");
-    const userEmail = Selector("#user_email");
-    const message = Selector("div");
-    
-    //Actions
-    // await t.click(signInButton);
     navbarPage.clickSignInButton();
-    await t.click(linkToPasswords);
-    await t.typeText(userEmail, "user-email@gmail.com", { paste: true });
-    await t.pressKey("enter");
+    loginPage.goToForgottenPassword();
+    passwordPage.submitEmail("email@gmail.com");
 
-    //Assertions
-    await t.expect(message.innerText).contains("Your password will be sent to the following email");
-    await t.expect(userEmail.exists).notOk();
+    await t.expect(passwordPage.message.innerText)
+        .contains("Your password will be sent to the following email");
+    await t.expect(passwordPage.userEmail.exists).notOk();
 });
