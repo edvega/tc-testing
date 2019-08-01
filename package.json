@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test:chrome": "testcafe chrome ./tests",
+    "test:chrome:5": "testcafe -c 5 chrome ./tests",
     "test:chrome:headless": "testcafe chrome:headless ./tests",
     "test:chrome:mobile": "testcafe 'chrome:emulation:device=iphone X' ./tests",
-    "test:safari": "testcafe safari ./tests"
+    "test:safari": "testcafe safari ./tests",
+    "test:multiple": "testcafe chrome,safari ./tests"
   },
   "author": "",
   "license": "ISC",
